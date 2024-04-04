@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/index.css">
+</head>
+
+<body>
+    <div id="current-user" data-address="<%= user.address %>"></div>
+    <div id="current-room" data-room="<%= room %>"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 rooms-sidebar">
+                <div class="card no-outline">
+                    <div class="card-body">
+                        <small>Logged in as</small><br>
+                        <b>
+                            TODO : HOOK THIS UP<br>
+                        </b>
+                    </div>
+                </div>
+                <hr>
+                <hr>
+                <a href="/rooms/hall" class="room-link">
+                    <div class="card no-outline mb-2 room-card  <%= room == 'hall' ? 'active' : '' %>">
+                        <div class="card-body">
+                            <span class='name'>
+                                Main Chat
+                            </span><br>
+                            <span class='member-count'>
+                                <small>
+                                    99 Members
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                <a href="/rooms/aleph">
+
+                    <div class="card no-outline mb-2 room-card <%= room == 'aleph' ? 'active ' : '' %>">
+                        <div class="card-body">
+                            <span class='name'>
+                                Aleph
+                            </span><br>
+                            <span class='member-count'>
+                                <small>
+                                    58 Members
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                <a href="/rooms/node">
+
+                    <div class="card no-outline mb-2 room-card <%= room == 'node' ? 'active ' : '' %>">
+                        <div class="card-body">
+                            <span class='name'>
+                                Node JS
+                            </span><br>
+                            <span class='member-count'>
+                                <small>
+                                    34 Members
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-9">
+
+                <div class="chat-room">
+                    <nav class="navbar navbar-light">
+                        <span class="navbar-brand" href="#">
+                            <b>
+                                Chat
+                            </b>
+                        </span>
+                        <small>
+                            99 Members
+                        </small>
+                    </nav>
+                    <div id="messages">
+                        <% posts.forEach((post)=> { %>
+                            <% var parsed_item=JSON.parse(post.item_content) %>
+                                <div id="message-<%= post.item_hash %>"
+                                    class="message mb-2 <%= parsed_item.address == user.address ? 'me' : '' %>">
+                                    <div class="content-container">
+                                        <div class="content">
+                                            <%= parsed_item.content.body %>
+                                        </div>
+                                        <div class="author">
+                                            <%= parsed_item.address %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                    </div>
+                    <div class="chat-box">
+                        <form action="/messages/<%= room %>" method="post" id="message-form">
+                            <div class="input-group">
+                                <input type="text" name="message" id="message" placeholder="Enter your message ... "
+                                    class="form-control">
+                                <div class="input-group-append"></div>
+                                <input type="submit" value="Post Message" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(() => {
+            let displayedMessageIds = [];
+            function appendMessage(message) {
+                var user_address = $('#current-user').data("address");
+                if (isNotOnPage(message) && isForChannel(message) && isChatMessage(message)) {
+                    var template = `<div id=message-${message.item_hash} class="message mb-2 ` + (user_address == message.content.address ? "me" : "") + '"> \
+                            <div class="content-container"> \
+                            <div class="content"> ' + message.content.content.body + '</div> \
+                            <div class="author"> ' + message.content.address + '</div> \
+                            </div> \
+                            </div>';
+                    $("#messages").append(template);
+                    displayedMessageIds.push(message.item_hash);
+                }
+            }
+
+            function isNotOnPage(message) {
+                return $(`#message-${message.item_hash}`).length === 0;
+            }
+
+            function isChatMessage(message) {
+                return message.content.content.body !== undefined;
+            }
+
+            function isForChannel(message) {
+                return $('#current-room').data('room') == message.content.ref;
+            }
+
+            const socket = new WebSocket('wss://api2.aleph.im/api/ws0/messages?msgType=POST&contentType=chat');
+            socket.onmessage = (e) => {
+                let msg = JSON.parse(e.data);
+                let content = msg.content.content.body;
+                appendMessage(msg);
+            }
+
+            $('#message-form').submit((e) => {
+                e.preventDefault();
+                $.post('/messages/<%= room %>', ($('#message-form').serialize()));
+                $('#message-form #message').val('');
+            })
+        });
+
+    </script>
+</body>
+
+</html>
