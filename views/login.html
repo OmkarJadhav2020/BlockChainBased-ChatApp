@@ -5,12 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .box{
+        background:linear-gradient(to top left,rgb(171, 233, 220),#ffffff33);  
+        
+        width: 30%;
+        z-index: 2;
+        border: 2px solid rgb(16, 17, 17);
+        border-radius: 12px;
+        padding: 40px;
+        position: absolute;
+        top: 20%;
+        transform: translateX(100%);
+        backdrop-filter: blur(10px);
+        
+        }
+
+
+    .values label{
+    font-weight: bold;
+     }
+
+.values input{
+    height: 40px;
+    width: 100%;
+
+}
+
+#submit-btn{
+        
+    color: rgb(235, 233, 241);
+    border-radius: 10px;
+    height: 40px;
+    background-color: rgb(8, 8, 126);
+    font-size: 17px;
+    font-weight: 200;
+}
+
+#submit-btn:hover{
+    background-color: red;
+    cursor: pointer;
+}
+
+.outer{
+
+        background: linear-gradient(to top left,blue,aqua);
+        height: 100vh;
+        width:100vw ;
+        opacity: 0.8;
+     
+}
+
+.signup-footer p{
+    text-align: center;
+}
+
+</style>
 <body>
-    <h1>LOGIN</h1>
-    <form action="/login" method="post">
-        <input type="text" name="username" id="" placeholder="Enter your username ... ">
-        <input type="password" name="password" id="" placeholder="Enter your password ...">
-        <input type="submit" value="Login">
-    </form>
+
+
+<div class="outer">
+     
+
+     <div class="box">
+          <h1>LOGIN</h1>
+          <form action="/login" method="post">
+
+
+       
+        <div class="values">
+            <p>
+            <label for="username">Enter Your Name</label>
+            <br>
+            <input type="text" name="username" id="username" placeholder="Enter your username ... ">
+           </p>
+           
+
+            <p>
+            <label for="password">Enter Your Password</label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Enter your password ...">
+            </p>
+
+            <p>
+            <input type="submit" value="Login" id="submit-btn">
+            </p>
+        </div>
+            
+        <footer class="signup-footer">
+            <p>Dont have account ? <a href="register">Sign up</a></p>
+        </footer>
+
+
+
+          </form>
+
+    </div>
+
+</div>
+
 </body>
 </html>
