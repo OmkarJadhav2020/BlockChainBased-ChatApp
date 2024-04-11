@@ -39,7 +39,7 @@ body ::-webkit-scrollbar {
     float: right;
 }
 .chat-room .message.me .content-container .content {
-    background-color: #007bff;
+    background-color: #2563eb;
     color: white
 }
 .chat-room .chat-box {
@@ -92,3 +92,8 @@ body ::-webkit-scrollbar {
 .rooms-sidebar {
     border-right: 1px solid #eee;
 }
+.clr
+{
+    background-color: #2563eb;
+}
+

@@ -5,7 +5,7 @@ import bodyParser, { urlencoded } from "body-parser";
 const aleph = require("aleph-js");
 
 const expressSession = require("express-session")({
-  secret: "insert secret here",
+  secret: "insert secret here", 
   resave: false,
   saveUninitialized: false,
 });
