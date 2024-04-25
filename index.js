@@ -51,10 +51,10 @@ app.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   var room = 'hall10';
   var api_server = 'https://api2.aleph.im';
   var network_id = 261;
+  var user_name = req['user']['username']
   var channel = 'TEST';
   aleph.posts.get_posts('chat',{'refs' : [room],'api_server' : api_server}).then((result)=>{
-    // console.log(result.posts)
-    res.render('index',{posts : result.posts,user : req.user,room : room});
+    res.render('index',{posts : result.posts,user : req.user,room : room,userName : user_name});
   })
 });
 
