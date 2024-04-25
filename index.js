@@ -15,7 +15,7 @@ import passportLocalMongoose from "passport-local-mongoose";
 import connectEnsureLogin from "connect-ensure-login";
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
@@ -118,24 +118,34 @@ app.get(
   }
 );
 
+app.post('/messages/:room', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+  try {
+      const msg = req.body.message;
+      const room = req.params.room;
 
-app.post('/messages/:room',connectEnsureLogin.ensureLoggedIn(),(req,res)=>
-{
-    var msg = req.body.message;
-    const room = req.params.room;
-    aleph.ethereum.import_account({mnemonics:req.user.mnemonics}).then((account)=>
-    {
-       var api_server  = 'https://api2.aleph.im';
-       var network_id = 261;
-       var channel = 'TEST';
-       aleph.posts.submit(account.address , 'chat',{'body' : msg},{
-        ref : room,
-        api_server: api_server,
-        account : account,
-        channel : channel,
-       })
-    })
-})
+      // Import account asynchronously
+      const account = await aleph.ethereum.import_account({ mnemonics: req.user.mnemonics });
+
+      const api_server = 'https://api2.aleph.im';
+      const network_id = 261;
+      const channel = 'TEST';
+
+      // Submit message asynchronously
+      await aleph.posts.submit(account.address, 'chat', { 'body': msg }, {
+          ref: room,
+          api_server: api_server,
+          account: account,
+          channel: channel,
+      });
+
+      // Send response indicating success
+      res.status(200).json({ success: true, message: 'Message submitted successfully.' });
+  } catch (error) {
+      // Handle errors
+      console.error('Error submitting message:', error);
+      res.status(500).json({ success: false, error: 'Internal server error.' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
