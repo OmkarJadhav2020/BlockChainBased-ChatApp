@@ -1,113 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat APP</title>
 </head>
 <style>
-    .body{
+    body {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
-    .box{
-        background:linear-gradient(to top left,rgb(171, 233, 220),#ffffff33);  
-        
-        width: 30%;
+    .box {
+        background: #ffffff;
+        width: 300px;
+        height: 50vh;
         z-index: 2;
-        border: 2px solid rgb(16, 17, 17);
         border-radius: 12px;
         padding: 40px;
-        position: absolute;
-        top: 20%;
-        transform: translateX(100%);
-        backdrop-filter: blur(10px);
-        
-        }
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
 
 
-    .values label{
-    font-weight: bold;
-     }
+    .values label {
+        font-weight: bold;
+    }
 
-.values input{
-    height: 40px;
-    width: 100%;
-    
-}
+    .values input {
+        height: 40px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 
-#submit-btn{
-        
-    color: rgb(235, 233, 241);
-    border-radius: 10px;
-    height: 40px;
-    background-color: rgb(8, 8, 126);
-    font-size: 17px;
-    font-weight: 200;
-}
+    }
 
-#submit-btn:hover{
-    background-color: red;
-    cursor: pointer;
-}
+    #submit-btn {
 
-.outer{
+        margin-top: 40px;
+        color: rgb(235, 233, 241);
+        border-radius: 10px;
+        height: 40px;
+        background-color: rgb(8, 8, 126);
+        font-size: 17px;
+        font-weight: 200;
+    }
 
-        background: linear-gradient(to top left,blue,aqua);
+    #submit-btn:hover {
+        background-color: red;
+        cursor: pointer;
+    }
+
+    .outer {
+
+        background: #f2f2f2;
+        width: 100vw;
         height: 100vh;
-        width:100vw ;
         opacity: 0.8;
-     
-}
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.signup-footer p{
-    text-align: center;
-}
+    .signup-footer p {
+        text-align: center;
+    }
 
+    .signup-footer p a {
+        text-decoration: none;
+        font-weight: bolder;
+        color: rgba(0, 0, 0, 1);
+    }
 </style>
+
 <body>
 
 
-<div class="outer">
-     
-
-     <div class="box">
-          <h1>LOGIN</h1>
-          <form action="/login" method="post">
+    <div class="outer">
 
 
-       
-        <div class="values">
-            <p>
-            <label for="username">Enter Your Name</label>
-            <br>
-            <input type="text" name="username" id="username" placeholder="Enter your username ... ">
-           </p>
-           
+        <div class="box">
+            <h1>LOGIN</h1>
+            <form action="/login" method="post">
 
-            <p>
-            <label for="password">Enter Your Password</label>
-            <br>
-            <input type="password" name="password" id="password" placeholder="Enter your password ...">
-            </p>
 
-            <p>
-            <input type="submit" value="Login" id="submit-btn">
-            </p>
+
+                <div class="values">
+                    <p>
+                        <!-- <label for="username">Enter Your Name</label> -->
+                        <br>
+                        <input type="text" name="username" id="username" placeholder="Username ... ">
+                    </p>
+
+
+                    <p>
+                        <!-- <label for="password">Enter Your Password</label> -->
+                        <br>
+                        <input type="password" name="password" id="password" placeholder="Password ...">
+                    </p>
+
+                    <p>
+                        <input type="submit" value="Login" id="submit-btn">
+                    </p>
+                </div>
+
+                <footer class="signup-footer">
+                    <p>Dont have account ? <a href="register">Sign up</a></p>
+                </footer>
+
+
+
+            </form>
+
         </div>
-            
-        <footer class="signup-footer">
-            <p>Dont have account ? <a href="register">Sign up</a></p>
-        </footer>
-
-
-
-          </form>
 
     </div>
-
-</div>
 </body>
+
 </html>

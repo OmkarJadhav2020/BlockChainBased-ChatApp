@@ -48,7 +48,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-  var room = 'hall';
+  var room = 'hall10';
   var api_server = 'https://api2.aleph.im';
   var network_id = 261;
   var channel = 'TEST';

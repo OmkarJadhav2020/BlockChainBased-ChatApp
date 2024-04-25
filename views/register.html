@@ -1,109 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-.main-register{
-        background: linear-gradient(to top left,blue,aqua);
+    .main-register {
         height: 100vh;
-        width:100vw ;
-        opacity: 0.8;
-     
-}
-.inner-box {
-   display: flex;
-   flex-direction: column;
-   gap: 30px;
-    background:linear-gradient(to top left,rgb(171, 233, 220),#ffffff33); 
-    padding: 40px;
-    position: relative;
-    width: 30%;
-    border: 2px solid black;
-    z-index: 2;
-    top: 20%;
-    transform: translateX(120%);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-}
+        width: 100vw;
+        background: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inner-box {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        padding: 40px;
+        z-index: 2;
+        border-radius: 12px;
+        width: 370px;
+        height: 50vh;
+    }
 
 
-.inner-form  input{
-     width: 100%;
-     height: 40px;
-     border-radius: 7px;
-}
+    .inner-form input {
+        height: 40px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
 
-.inner-form label{
-    font-weight: bold;
+    .inner-form label {
+        font-weight: bold;
 
-    
-}
-.inner-form ::placeholder{
-font-size: 12px;
-}
-#submit-val{
-    background-color: blue;
-    margin-top: 15px;
-    color: whitesmoke;
-    
-}
 
-#submit-val:hover{
-    background-color: red;
-    cursor: pointer;
+    }
 
-}
-.signup-footer{
-    text-align: center;
-    margin-top: 10px;
-}
+    .inner-form ::placeholder {
+        font-size: 12px;
+    }
 
+    #submit-val {
+        margin-top: 40px;
+        color: rgb(235, 233, 241);
+        border-radius: 10px;
+        height: 40px;
+        background-color: rgb(8, 8, 126);
+        font-size: 17px;
+        font-weight: 200;
+
+    }
+
+    #submit-val:hover {
+        background-color: red;
+        cursor: pointer;
+
+    }
+
+    .signup-footer {
+        text-align: center;
+        margin-top: 10px;
+    }
 </style>
-   
+
 
 <body>
-  <div class="main-register">
+    <div class="main-register">
 
-     <div class="inner-box">
-                   <h1>Register</h1>
-                <form action="/register" method="post">
-     <div class="inner-form">
+        <div class="inner-box">
+            <h1>Register</h1>
+            <form action="/register" method="post">
+                <div class="inner-form">
                     <p>
-                    <label for="username">Emter Your Name Here</label>
-                    <br>
-                    <input type="text" name="username" id="" placeholder="Enter your username ... ">
+
+                        <br>
+                        <input type="text" name="username" id="" placeholder="Enter your username ... ">
                     </p>
 
-                     <p>
-                        <label for="password">Enter Password</label>
+                    <p>
+
                         <br>
-                    <input type="password" name="password" id="" placeholder="Enter your password ...">
-                    <br>
-                     </p>
-                       
-
-                    <input type="submit"  id="submit-val"   value="Login">
-                     
+                        <input type="password" name="password" id="" placeholder="Enter your password ...">
+                        <br>
+                    </p>
 
 
-                     <footer class="signup-footer">
+                    <input type="submit" id="submit-val" value="Login">
+
+
+
+                    <footer class="signup-footer">
                         <p>Already have account ? <a href="login">Sign in</a></p>
                     </footer>
-            
-                </form>
-            </div>
+
+            </form>
+        </div>
     </div>
 
-   </div>
+    </div>
 
 </body>
+
 </html>
