@@ -18,6 +18,7 @@ body ::-webkit-scrollbar {
     border-bottom: 1px solid #eee;
     margin-left: -15px;
     width: calc(100% + 30px);
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 }
 .chat-room .message {
     min-height: 59px;
@@ -39,7 +40,7 @@ body ::-webkit-scrollbar {
     float: right;
 }
 .chat-room .message.me .content-container .content {
-    background-color: #2563eb;
+    background-color: #007aff;
     color: white
 }
 .chat-room .chat-box {
@@ -83,7 +84,7 @@ body ::-webkit-scrollbar {
 }
 .room-link .room-card .name {
     font-weight: bold;
-    color: black;
+    color: white;
 }
 .room-link .room-card .member-count {
     color: #777;
@@ -91,9 +92,20 @@ body ::-webkit-scrollbar {
 }
 .rooms-sidebar {
     border-right: 1px solid #eee;
+    background-color: #007aff;
+    border-radius: 5px;
 }
 .clr
 {
-    background-color: #2563eb;
+    background-color: #007aff;
 }
 
+.card-body
+{
+    background-color: #007aff;
+    color: #fff;
+}
+.app-title
+{
+    color: #fff;
+}

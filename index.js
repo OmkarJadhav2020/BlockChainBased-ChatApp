@@ -63,9 +63,9 @@ app.get("/rooms/:room", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   var api_server = 'https://api2.aleph.im';
   var network_id = 261;
   var channel = 'TEST';
+  var user_name = req['user']['username']
   aleph.posts.get_posts('chat',{'refs' : [room],'api_server' : api_server}).then((result)=>{
-    // console.log(result.posts);
-    res.render('index',{posts : result.posts,user : req.user,room : room});
+    res.render('index',{posts : result.posts,user : req.user,room : room,userName : user_name});
   })
 });
 
