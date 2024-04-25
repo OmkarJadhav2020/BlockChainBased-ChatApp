@@ -19,64 +19,48 @@
 </head>
 
 <body>
-    
+
     <div id="current-user" data-address="<%= user.address %>"></div>
     <div id="current-room" data-room="<%= room %>"></div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3 rooms-sidebar">
-                <div class="card no-outline">
-                    <div class="card-body">
-                        <strong class="app-title">DAPP</strong>
-                    </div>
+            <div class="sidebar">
+                <div class="app-title">DAPP</div>
+                <div class="room-list">
+                    <a href="/rooms/hall20" class="room-link">
+                        <div class="room-card <%= room === 'hall' ? 'active' : '' %>">
+                            <div class="room-info">
+                                <img src="https://xsgames.co/randomusers/avatar.php?g=male" class="room-icon"
+                                    alt="Icon 1">
+                                <span class="room-name">Friend-1</span>
+                                <span class="member-count"><!-- 100 Members --></span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/rooms/aleph20" class="room-link">
+                        <div class="room-card <%= room === 'aleph1' ? 'active' : '' %>">
+                            <div class="room-info">
+                                <img src="https://xsgames.co/randomusers/avatar.php?g=female" class="room-icon"
+                                    alt="Icon 2">
+                                <span class="room-name">Friend-2</span>
+                                <span class="member-count"><!-- 58 Members --></span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/rooms/node20" class="room-link">
+                        <div class="room-card <%= room === 'node1' ? 'active' : '' %>">
+                            <div class="room-info">
+                                <img src="https://xsgames.co/randomusers/avatar.php?g=pixel" class="room-icon"
+                                    alt="Icon 3">
+                                <span class="room-name">Group Chat</span>
+                                <span class="member-count"><!-- 34 Members --></span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <!-- <hr> -->
-                <!-- <hr> -->
-                <a href="/rooms/hall10" class="room-link">
-                    <div class="card no-outline mb-2 room-card  <%= room == 'hall' ? 'active' : '' %>">
-                        <div class="card-body">
-                            <span class='name'>
-                                Friend-1
-                            </span><br>
-                            <span class='member-count'>
-                                <small>
-                                    <!-- 100 Members -->
-                                </small>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <a href="/rooms/aleph10" class="room-link">
-
-                    <div class="card no-outline mb-2 room-card  <%= room == 'aleph1' ? 'active ' : '' %>">
-                        <div class="card-body">
-                            <span class='name'>
-                                Friend-2
-                            </span><br>
-                            <span class='member-count'>
-                                <small>
-                                    <!-- 58 Members -->
-                                </small>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <a href="/rooms/node10" class="room-link">
-
-                    <div class="card no-outline mb-2 room-card <%= room == 'node1' ? 'active ' : '' %>">
-                        <div class="card-body">
-                            <span class='name'>
-                                Group Chat
-                            </span><br>
-                            <span class='member-count'>
-                                <small>
-                                    <!-- 34 Members -->
-                                </small>
-                            </span>
-                        </div>
-                    </div>
-                </a>
             </div>
+
+
             <div class="col-9">
 
                 <div class="chat-room">
@@ -97,6 +81,8 @@
                                     class="message mb-2 <%= parsed_item.address == user.address ? 'me' : '' %>">
                                     <div class="content-container">
                                         <div class="content">
+                                            <img class="<%= parsed_item.address == user.address ? 'prof-2' : 'prof-1' %>"
+                                                src="../stylesheets/man.png" alt="">
                                             <%= parsed_item.content.body %>
                                         </div>
                                         <div class="author">
@@ -128,9 +114,12 @@
             function appendMessage(message) {
                 var user_address = $('#current-user').data("address");
                 if (isNotOnPage(message) && isForChannel(message) && isChatMessage(message)) {
+                    let itemClass = message.content.address == user_address ? 'prof-2' : 'prof-1';
+                    let item = `<img class="${itemClass}" src="../stylesheets/man.png" alt="">`;
+
                     var template = `<div id=message-${message.item_hash} class="message mb-2 ` + (user_address == message.content.address ? "me" : "") + '"> \
                             <div class="content-container"> \
-                            <div class="content"> ' + message.content.content.body + '</div> \
+                            <div class="content"> ' + item + message.content.content.body + '</div> \
                             <div class="author"> ' + message.content.address + '</div> \
                             </div> \
                             </div>';

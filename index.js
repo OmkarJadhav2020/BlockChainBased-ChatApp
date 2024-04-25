@@ -48,13 +48,13 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-  var room = 'hall10';
+  var room = 'hall20';
   var api_server = 'https://api2.aleph.im';
   var network_id = 261;
   var user_name = req['user']['username']
   var channel = 'TEST';
   aleph.posts.get_posts('chat',{'refs' : [room],'api_server' : api_server}).then((result)=>{
-    res.render('index',{posts : result.posts,user : req.user,room : room,userName : user_name});
+    res.render('index',{posts : result.posts.reverse(),user : req.user,room : room,userName : user_name});
   })
 });
 
@@ -65,7 +65,7 @@ app.get("/rooms/:room", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   var channel = 'TEST';
   var user_name = req['user']['username']
   aleph.posts.get_posts('chat',{'refs' : [room],'api_server' : api_server}).then((result)=>{
-    res.render('index',{posts : result.posts,user : req.user,room : room,userName : user_name});
+    res.render('index',{posts : result.posts.reverse(),user : req.user,room : room,userName : user_name});
   })
 });
 
