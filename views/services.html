@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Blockchain Messaging App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eee; /* Light grey background */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #724ff9; /* Purple header background */
+    color: #fff; /* White text */
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+}
+
+.services {
+    padding: 50px 0;
+}
+
+.service {
+    background-color: #fff; /* White service background */
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.service i {
+    color: #724ff9; /* Purple icon color */
+}
+
+.service h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.service p {
+    margin-top: 10px;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #724ff9; /* Purple footer background */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-envelope"></i> Our Services</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="services">
+        <div class="container">
+            <div class="service">
+                <i class="fas fa-lock fa-3x"></i>
+                <h2>End-to-End Encryption</h2>
+                <p>Secure messaging using blockchain technology ensures that only the sender and recipient can access the contents of the messages, providing privacy and confidentiality.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-database fa-3x"></i>
+                <h2>Decentralized Storage</h2>
+                <p>Messages are stored on a decentralized network of nodes, eliminating the risk of centralized data breaches and ensuring data integrity and availability.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-file-alt fa-3x"></i>
+                <h2>Immutable Record Keeping</h2>
+                <p>Each message sent and received is recorded on the blockchain, creating a tamper-proof and auditable trail of communication for enhanced transparency and accountability.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Blockchain Messaging App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

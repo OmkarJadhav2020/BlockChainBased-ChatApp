@@ -48,7 +48,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-  var room = 'hall20';
+  var room = 'hall30';
   var api_server = 'https://api2.aleph.im';
   var network_id = 261;
   var user_name = req['user']['username']
@@ -79,6 +79,12 @@ app.post("/login", passport.authenticate("local"), (req, res) => {
 
 app.get("/register", (req, res) => {
   res.sendFile("views/register.html", { root: __dirname });
+});
+app.get("/services", (req, res) => {
+  res.sendFile("views/services.html", { root: __dirname });
+});
+app.get("/about", (req, res) => {
+  res.sendFile("views/about.html", { root: __dirname });
 });
 
 app.post("/register", (req, res) => {

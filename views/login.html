@@ -5,117 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat APP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #eee; /* Light grey background */
+            font-family: Arial, sans-serif;
+        }
+
+        .outer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .box {
+            background: #ffffff;
+            width: 300px;
+            height: 50vh;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .box h1 {
+            color: #724ff9; /* Purple heading color */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .values {
+            margin-bottom: 20px;
+        }
+
+        .values label {
+            font-weight: bold;
+        }
+
+        .values input {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        #submit-btn {
+            margin-top: 20px;
+            color: #fff; /* White text */
+            border-radius: 10px;
+            height: 40px;
+            background-color: #724ff9; /* Purple button background */
+            font-size: 17px;
+            font-weight: 200;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background-color: #5a3ab8; /* Darker purple on hover */
+        }
+
+        .signup-footer p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-footer p a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #724ff9; /* Purple link color */
+        }
+    </style>
 </head>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    .box {
-        background: #ffffff;
-        width: 300px;
-        height: 50vh;
-        z-index: 2;
-        border-radius: 12px;
-        padding: 40px;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    }
-
-
-    .values label {
-        font-weight: bold;
-    }
-
-    .values input {
-        height: 40px;
-        width: 100%;
-        border: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-
-    }
-
-    #submit-btn {
-
-        margin-top: 40px;
-        color: rgb(235, 233, 241);
-        border-radius: 10px;
-        height: 40px;
-        background-color: rgb(8, 8, 126);
-        font-size: 17px;
-        font-weight: 200;
-    }
-
-    #submit-btn:hover {
-        background-color: red;
-        cursor: pointer;
-    }
-
-    .outer {
-
-        background: #f2f2f2;
-        width: 100vw;
-        height: 100vh;
-        opacity: 0.8;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .signup-footer p {
-        text-align: center;
-    }
-
-    .signup-footer p a {
-        text-decoration: none;
-        font-weight: bolder;
-        color: rgba(0, 0, 0, 1);
-    }
-</style>
 
 <body>
 
-
     <div class="outer">
-
-        <img src="" alt="" srcset="">
         <div class="box">
-            <h1>LOGIN</h1>
+            <h1><i class="fas fa-user-circle"></i> LOGIN</h1>
             <form action="/login" method="post">
-
-
-
                 <div class="values">
-                    <p>
-                        <!-- <label for="username">Enter Your Name</label> -->
-                        <br>
-                        <input type="text" name="username" id="username" placeholder="Username ... ">
-                    </p>
-
-
-                    <p>
-                        <!-- <label for="password">Enter Your Password</label> -->
-                        <br>
-                        <input type="password" name="password" id="password" placeholder="Password ...">
-                    </p>
-
-                    <p>
-                        <input type="submit" value="Login" id="submit-btn">
-                    </p>
+                    <input type="text" name="username" id="username" placeholder="Username">
                 </div>
-
-                <footer class="signup-footer">
-                    <p>Dont have account ? <a href="register">Sign up</a></p>
-                </footer>
-
-
-
+                <div class="values">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="values">
+                    <input type="submit" value="Login" id="submit-btn">
+                </div>
             </form>
-
+            <footer class="signup-footer">
+                <p>Don't have an account? <a href="register">Sign up</a></p>
+            </footer>
         </div>
-
     </div>
+
 </body>
 
 </html>
